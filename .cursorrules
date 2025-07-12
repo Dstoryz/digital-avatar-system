@@ -1,0 +1,205 @@
+# Cursor AI Rules для проекта "Цифровой аватар"
+
+## Общие правила разработки
+
+### Языки и фреймворки
+- Используй Python 3.10+ для backend и AI компонентов
+- Используй TypeScript для всех React компонентов
+- Всегда добавляй типизацию для параметров и возвращаемых значений
+- Используй async/await для всех асинхронных операций
+- Предпочитай функциональное программирование в React
+
+### Документация и комментарии
+- Добавляй подробные docstrings для всех Python функций и классов
+- Комментируй сложные AI алгоритмы на русском языке
+- Используй type hints во всех Python функциях
+- Добавляй JSDoc комментарии для TypeScript функций
+- Документируй все API endpoints
+
+### Обработка ошибок
+- Обязательно добавляй try-catch блоки для всех AI операций
+- Используй пользовательские exceptions для специфических ошибок
+- Логируй все ошибки с контекстом
+- Добавляй graceful degradation для AI компонентов
+- Валидируй все входные данные
+
+### GPU и производительность
+- Оптимизируй код для RTX 3060 12GB VRAM
+- Используй torch.cuda.empty_cache() после тяжелых операций
+- Добавляй мониторинг использования GPU памяти
+- Используй batch processing где возможно
+- Кешируй результаты вычислений
+
+### AI/ML специфичные правила
+- Используй контекстные менеджеры для загрузки моделей
+- Добавляй проверки доступности CUDA
+- Используй смешанную точность (AMP) для ускорения
+- Обязательно освобождай GPU память после использования
+- Логируй время выполнения AI операций
+
+### FastAPI backend
+- Используй pydantic модели для валидации данных
+- Добавляй OpenAPI документацию для всех endpoints
+- Используй dependency injection для сервисов
+- Обязательно добавляй CORS настройки
+- Используй async def для всех route handlers
+
+### React frontend
+- Используй функциональные компоненты с hooks
+- Применяй React.memo для оптимизации рендеринга
+- Используй useCallback и useMemo для производительности
+- Добавляй error boundaries для обработки ошибок
+- Используй Tailwind CSS для стилизации
+
+### WebRTC и аудио/видео
+- Обязательно проверяй поддержку браузером
+- Добавляй fallback для старых браузеров
+- Используй getUserMedia с proper error handling
+- Добавляй индикаторы состояния для пользователя
+- Оптимизируй качество аудио/видео для производительности
+
+### Безопасность
+- Валидируй все файлы перед обработкой
+- Ограничивай размер загружаемых файлов
+- Используй HTTPS для production
+- Добавляй rate limiting для API endpoints
+- Не логируй чувствительные данные
+
+### Тестирование
+- Создавай unit тесты для всех AI компонентов
+- Добавляй integration тесты для API endpoints
+- Используй mocking для внешних сервисов
+- Тестируй edge cases и error conditions
+- Добавляй performance тесты для GPU операций
+
+### Архитектура кода
+- Используй dependency injection pattern
+- Разделяй бизнес-логику и презентационный слой
+- Создавай service классы для AI операций
+- Используй repository pattern для данных
+- Применяй SOLID принципы
+
+### Специфичные для проекта правила
+- Всегда проверяй доступность микрофона/камеры
+- Добавляй прогресс бары для долгих AI операций
+- Используй WebSocket для real-time коммуникации
+- Кешируй анимации лица для повторного использования
+- Добавляй эмоциональные индикаторы в ответы
+
+### Отладка и логирование
+- Используй structured logging (JSON format)
+- Добавляй correlation ID для трассировки запросов
+- Логируй все GPU операции с метриками
+- Используй debug режим для development
+- Добавляй health check endpoints
+
+### Форматирование кода
+- Используй black для форматирования Python кода
+- Используй prettier для TypeScript/React кода
+- Добавляй pre-commit hooks для форматирования
+- Используй consistent naming conventions
+- Ограничивай длину строк до 88 символов (Python) и 80 (TS)
+
+### Работа с зависимостями
+- Закрепляй версии всех зависимостей
+- Используй virtual environment для Python
+- Регулярно обновляй зависимости
+- Документируй причины использования каждой зависимости
+- Используй requirements.txt и package.json
+
+### Контекст для AI ассистента
+- При работе с SadTalker всегда упоминай GPU оптимизацию
+- Для Coqui TTS фокусируйся на качестве голоса
+- При работе с Whisper оптимизируй для real-time
+- Для Ollama/Llama используй контекстное управление
+- Всегда учитывай ограничения RTX 3060
+
+### Пользовательский опыт
+- Добавляй loading states для всех AI операций
+- Используй понятные error messages на русском
+- Добавляй tooltips для сложных функций
+- Делай интерфейс responsive для всех устройств
+- Используй accessible design patterns
+
+## Примеры кода
+
+### Python AI функция
+```python
+import torch
+from typing import Optional, Tuple
+import logging
+
+logger = logging.getLogger(__name__)
+
+def process_audio_with_gpu(
+    audio_path: str, 
+    model_path: str
+) -> Optional[torch.Tensor]:
+    """
+    Обрабатывает аудио с использованием GPU.
+    
+    Args:
+        audio_path: путь к аудиофайлу
+        model_path: путь к модели
+        
+    Returns:
+        Обработанный тензор или None при ошибке
+    """
+    try:
+        # Проверка доступности CUDA
+        if not torch.cuda.is_available():
+            logger.warning("CUDA недоступен, используется CPU")
+            
+        # Загрузка модели с контекстным менеджером
+        with torch.no_grad():
+            # Ваш код здесь
+            pass
+            
+    except Exception as e:
+        logger.error(f"Ошибка обработки аудио: {e}")
+        return None
+    finally:
+        # Освобождение GPU памяти
+        torch.cuda.empty_cache()
+```
+
+### TypeScript React компонент
+```typescript
+import React, { useCallback, useMemo } from 'react';
+
+interface AvatarProps {
+  videoSrc: string;
+  isLoading: boolean;
+  onError: (error: Error) => void;
+}
+
+const Avatar: React.FC<AvatarProps> = React.memo(({ 
+  videoSrc, 
+  isLoading, 
+  onError 
+}) => {
+  const handleVideoError = useCallback((error: Error) => {
+    console.error('Ошибка видео:', error);
+    onError(error);
+  }, [onError]);
+
+  return (
+    <div className="relative">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
+        </div>
+      )}
+      <video
+        src={videoSrc}
+        autoPlay
+        muted
+        onError={handleVideoError}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+});
+
+export default Avatar;
+``` 
