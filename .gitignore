@@ -157,6 +157,10 @@ data/
 *.tiff
 *.webp
 
+# Project media files (uploads and processed)
+backend/app/static/uploads/
+backend/app/static/processed/
+
 # Cache and temporary files
 cache/
 temp/

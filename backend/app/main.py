@@ -231,6 +231,10 @@ async def process_websocket_message(client_id: str, message: str) -> str:
 # Подключение роутеров
 app.include_router(api_router, prefix="/api/v1")
 
+# Подключение роутера загрузки
+from .routers import upload
+app.include_router(upload.router, prefix="/api/v1")
+
 
 if __name__ == "__main__":
     import uvicorn

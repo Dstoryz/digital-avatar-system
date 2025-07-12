@@ -15,8 +15,11 @@ const Header: React.FC = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <a href="/" className="text-gray-600 hover:text-primary-600 transition-colors">
               Главная
+            </a>
+            <a href="/settings" className="text-gray-600 hover:text-primary-600 transition-colors">
+              Настройки аватара
             </a>
             <a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">
               Документация
