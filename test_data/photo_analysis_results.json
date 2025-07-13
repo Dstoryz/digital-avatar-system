@@ -1,0 +1,276 @@
+{
+  "analysis_date": "2025-07-13T09:57:11.135791",
+  "total_photos": 7,
+  "results": [
+    {
+      "filename": "IMG-397e9a6d4514c3eed9806a4e1829c198-V.jpg",
+      "filepath": "test_data/photos/IMG-397e9a6d4514c3eed9806a4e1829c198-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.16,
+      "aspect_ratio": 0.75,
+      "brightness": 81.4,
+      "contrast": 66.4,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 101.66564453125,
+        "overall_brightness": 81.39791748046875,
+        "brightness_ratio": 1.2489956460574614,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 95.96044921875,
+        "green_mean": 76.99167724609374,
+        "blue_mean": 65.73762532552084,
+        "red_std": 73.51260082687904,
+        "green_std": 65.87465820769368,
+        "blue_std": 58.90142593829156
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-be276a790d8b98e4d8033175ff2597d6-V.jpg",
+      "filepath": "test_data/photos/IMG-be276a790d8b98e4d8033175ff2597d6-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.16,
+      "aspect_ratio": 0.75,
+      "brightness": 73.9,
+      "contrast": 54.9,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 88.570283203125,
+        "overall_brightness": 73.92359781901041,
+        "brightness_ratio": 1.1981327453782018,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 89.03569417317708,
+        "green_mean": 68.99557210286459,
+        "blue_mean": 59.62277587890625,
+        "red_std": 61.12110549791028,
+        "green_std": 55.06203970871959,
+        "blue_std": 51.32484554125379
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-5aaeb680a1950f960bbdd125a32638f1-V.jpg",
+      "filepath": "test_data/photos/IMG-5aaeb680a1950f960bbdd125a32638f1-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.14,
+      "aspect_ratio": 0.75,
+      "brightness": 63.0,
+      "contrast": 52.4,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 70.55505859375,
+        "overall_brightness": 62.977841796875,
+        "brightness_ratio": 1.120315599593173,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 76.31838785807291,
+        "green_mean": 58.76039388020833,
+        "blue_mean": 49.732586263020835,
+        "red_std": 60.891811401376806,
+        "green_std": 51.1461426653602,
+        "blue_std": 48.060503829077085
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-58c0aa45427aaf36121ca51a00a0cfec-V.jpg",
+      "filepath": "test_data/photos/IMG-58c0aa45427aaf36121ca51a00a0cfec-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.1,
+      "aspect_ratio": 0.75,
+      "brightness": 64.8,
+      "contrast": 55.5,
+      "quality_score": 6,
+      "max_score": 6,
+      "issues": [
+        "Маленький размер файла"
+      ],
+      "recommendations": [
+        "Возможно, фото слишком сжато"
+      ],
+      "face_analysis": {
+        "center_brightness": 105.727490234375,
+        "overall_brightness": 64.833974609375,
+        "brightness_ratio": 1.630742074219321,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 73.91302083333333,
+        "green_mean": 62.57318359375,
+        "blue_mean": 52.62406494140625,
+        "red_std": 63.513112084275754,
+        "green_std": 53.94053329168904,
+        "blue_std": 48.056647737274396
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-3fde0f7bcfb3771a9888edbca99fbf32-V.jpg",
+      "filepath": "test_data/photos/IMG-3fde0f7bcfb3771a9888edbca99fbf32-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.16,
+      "aspect_ratio": 0.75,
+      "brightness": 54.2,
+      "contrast": 45.6,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 64.696435546875,
+        "overall_brightness": 54.220270182291664,
+        "brightness_ratio": 1.1932149236689868,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 64.87709391276042,
+        "green_mean": 50.91776774088542,
+        "blue_mean": 43.166676432291666,
+        "red_std": 52.35384895474517,
+        "green_std": 44.50260112508627,
+        "blue_std": 42.19163020548751
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-c57828ca872ff36b031bfd32e8c6406b-V (1).jpg",
+      "filepath": "test_data/photos/IMG-c57828ca872ff36b031bfd32e8c6406b-V (1).jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.17,
+      "aspect_ratio": 0.75,
+      "brightness": 77.6,
+      "contrast": 55.3,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 80.108330078125,
+        "overall_brightness": 77.60298746744792,
+        "brightness_ratio": 1.0322841000383909,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 93.67545572916667,
+        "green_mean": 72.4743017578125,
+        "blue_mean": 61.75436930338542,
+        "red_std": 64.20415713750647,
+        "green_std": 54.803529429889316,
+        "blue_std": 50.2025522911331
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    },
+    {
+      "filename": "IMG-61b16809389810d9857204d5fd4db991-V.jpg",
+      "filepath": "test_data/photos/IMG-61b16809389810d9857204d5fd4db991-V.jpg",
+      "size": "960x1280",
+      "file_size_mb": 0.14,
+      "aspect_ratio": 0.75,
+      "brightness": 71.8,
+      "contrast": 55.8,
+      "quality_score": 7,
+      "max_score": 6,
+      "issues": [],
+      "recommendations": [],
+      "face_analysis": {
+        "center_brightness": 76.320966796875,
+        "overall_brightness": 71.81462646484376,
+        "brightness_ratio": 1.0627496173671152,
+        "face_area_estimated": 102400
+      },
+      "color_analysis": {
+        "red_mean": 87.15795654296875,
+        "green_mean": 67.02260823567708,
+        "blue_mean": 56.17293050130208,
+        "red_std": 64.93536159123501,
+        "green_std": 54.741476672878626,
+        "blue_std": 49.429681102049535
+      },
+      "format_info": {
+        "format": "JPEG",
+        "mode": "RGB",
+        "dpi": [
+          72,
+          72
+        ],
+        "exif": true
+      },
+      "status": "✅"
+    }
+  ],
+  "summary": {
+    "avg_score": 6.857142857142857,
+    "excellent_count": 7,
+    "good_count": 7,
+    "acceptable_count": 7,
+    "poor_count": 0
+  }
+}
