@@ -144,6 +144,10 @@ pretrained/
 
 # Data and media files
 data/
+
+# Personal media files (PRIVATE - never commit!)
+test_data/photos/
+test_data/audio/
 *.wav
 *.mp3
 *.mp4
@@ -156,6 +160,9 @@ data/
 *.bmp
 *.tiff
 *.webp
+*.ogg
+*.flac
+*.m4a
 
 # Project media files (uploads and processed)
 backend/app/static/uploads/
