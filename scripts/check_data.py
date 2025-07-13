@@ -96,7 +96,7 @@ def check_audio() -> Tuple[bool, List[str]]:
     
     print(f"📊 Найдено файлов: {len(audio_files)}")
     
-    valid_extensions = {'.wav', '.mp3', '.m4a', '.flac'}
+    valid_extensions = {'.wav', '.mp3', '.m4a', '.flac', '.ogg'}
     valid_audio = []
     issues = []
     
