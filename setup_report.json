@@ -1,0 +1,16 @@
+{
+  "timestamp": "/home/alex/Downloads/new-pr",
+  "system": "linux",
+  "results": {
+    "Python": true,
+    "CUDA": true,
+    "FFmpeg": true,
+    "Node.js": true,
+    "npm": true,
+    "Redis": false,
+    "Python Packages": false,
+    "Frontend": false,
+    "Environment Files": true,
+    "Directories": true
+  }
+}

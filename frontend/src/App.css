@@ -26,7 +26,9 @@
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Стили для чата */
@@ -52,4 +54,4 @@
 
 .chat-container::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
-} 
+}

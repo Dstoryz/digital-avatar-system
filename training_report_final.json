@@ -1,0 +1,335 @@
+{
+  "timestamp": "2025-07-13 19:32:10",
+  "training_data_analysis": {
+    "audio_files_count": 73,
+    "training_files_count": 10,
+    "total_audio_size_mb": 6.14,
+    "total_training_size_mb": 1.22,
+    "date_range": {
+      "earliest": "01-04-2021_10-42-44",
+      "latest": "30-03-2021_23-31-50",
+      "total_days": 73
+    },
+    "files_by_date": {
+      "10-07-2021_16-02-38": 1,
+      "05-01-2021_11-03-11": 1,
+      "15-02-2022_16-08-26": 1,
+      "15-02-2022_15-28-29": 1,
+      "13-06-2021_23-25-43": 1,
+      "07-05-2022_17-57-11": 1,
+      "26-03-2021_20-19-52": 1,
+      "03-04-2022_20-06-21": 1,
+      "10-07-2021_16-02-31": 1,
+      "11-05-2022_21-21-28": 1,
+      "24-10-2021_21-20-21": 1,
+      "07-03-2022_14-36-20": 1,
+      "04-03-2021_00-01-38": 1,
+      "28-03-2021_16-37-37": 1,
+      "28-03-2021_18-01-46": 1,
+      "05-05-2022_23-15-17": 1,
+      "26-03-2021_20-20-16": 1,
+      "29-03-2022_14-15-37": 1,
+      "01-04-2021_10-42-44": 1,
+      "07-05-2022_17-56-22": 1,
+      "16-05-2021_17-57-43": 1,
+      "30-03-2021_23-31-50": 1,
+      "14-04-2022_16-12-33": 1,
+      "17-11-2021_00-19-39": 1,
+      "08-05-2022_23-20-08": 1,
+      "10-07-2021_16-04-56": 1,
+      "17-09-2021_09-58-16": 1,
+      "17-09-2021_09-58-29": 1,
+      "12-04-2021_21-29-51": 1,
+      "20-05-2022_09-44-33": 1,
+      "15-02-2022_15-41-30": 1,
+      "24-10-2021_21-23-22": 1,
+      "04-11-2021_22-45-19": 1,
+      "05-01-2021_11-10-46": 1,
+      "23-04-2022_19-02-32": 1,
+      "12-05-2021_13-31-57": 1,
+      "10-07-2021_16-03-28": 1,
+      "03-07-2021_19-01-17": 1,
+      "07-05-2022_17-56-13": 1,
+      "10-07-2021_16-04-12": 1,
+      "15-06-2022_18-35-08": 1,
+      "23-03-2021_15-03-45": 1,
+      "28-03-2021_18-00-40": 1,
+      "15-06-2022_18-18-01": 1,
+      "01-04-2021_10-47-21": 1,
+      "16-05-2022_08-00-09": 1,
+      "20-12-2020_22-57-04": 1,
+      "28-03-2021_18-02-35": 1,
+      "07-04-2021_19-56-23": 1,
+      "05-05-2022_23-15-41": 1,
+      "07-03-2022_17-05-12": 1,
+      "24-10-2021_21-21-33": 1,
+      "04-11-2021_12-16-25": 1,
+      "29-03-2022_14-15-41": 1,
+      "04-11-2021_22-32-49": 1,
+      "10-07-2021_16-02-07": 1,
+      "28-03-2021_17-58-52": 1,
+      "20-11-2021_00-50-01": 1,
+      "15-06-2022_18-38-57": 1,
+      "12-05-2021_13-33-54": 1,
+      "28-03-2021_18-01-07": 1,
+      "24-10-2021_21-22-03": 1,
+      "01-04-2021_10-46-47": 1,
+      "24-10-2021_22-37-40": 1,
+      "15-06-2022_18-34-37": 1,
+      "12-06-2021_12-25-33": 1,
+      "24-10-2021_21-21-14": 1,
+      "14-04-2022_16-12-40": 1,
+      "12-05-2021_13-32-05": 1,
+      "08-09-2021_21-57-58": 1,
+      "14-06-2021_11-34-24": 1,
+      "08-09-2021_21-58-38": 1,
+      "06-07-2021_09-19-46": 1
+    }
+  },
+  "testing_results": {
+    "timestamp": "2025-07-13 19:31:26",
+    "test_type": "new_training_data",
+    "total_voices_tested": 5,
+    "total_tests": 25,
+    "total_successful": 25,
+    "overall_success_rate": 100.0,
+    "results": [
+      {
+        "voice": "audio_99@24-10-2021_21-22-03.ogg",
+        "voice_size": 85189,
+        "results": [
+          {
+            "text": "Привет! Как дела?",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_84ec45fd.wav",
+            "duration": 6.68,
+            "file_size": 294666
+          },
+          {
+            "text": "Сегодня прекрасная погода.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_70c462f2.wav",
+            "duration": 8.72,
+            "file_size": 384630
+          },
+          {
+            "text": "Я очень рада вас видеть.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_009aa67f.wav",
+            "duration": 28.58,
+            "file_size": 1260456
+          },
+          {
+            "text": "Спасибо за внимание.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_b6e8e940.wav",
+            "duration": 38.06,
+            "file_size": 1678524
+          },
+          {
+            "text": "До свидания!",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_3e1aebf1.wav",
+            "duration": 7.46,
+            "file_size": 329064
+          }
+        ],
+        "successful": 5,
+        "total": 5
+      },
+      {
+        "voice": "audio_97@24-10-2021_21-21-14.ogg",
+        "voice_size": 34916,
+        "results": [
+          {
+            "text": "Привет! Как дела?",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_8a349829.wav",
+            "duration": 15.44,
+            "file_size": 680982
+          },
+          {
+            "text": "Сегодня прекрасная погода.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_87c2bf86.wav",
+            "duration": 20.72,
+            "file_size": 913830
+          },
+          {
+            "text": "Я очень рада вас видеть.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_1990f1fa.wav",
+            "duration": 14.42,
+            "file_size": 636000
+          },
+          {
+            "text": "Спасибо за внимание.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_9d1ad783.wav",
+            "duration": 2.78,
+            "file_size": 122676
+          },
+          {
+            "text": "До свидания!",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_418ca62b.wav",
+            "duration": 20.72,
+            "file_size": 913830
+          }
+        ],
+        "successful": 5,
+        "total": 5
+      },
+      {
+        "voice": "audio_98@24-10-2021_21-21-33.ogg",
+        "voice_size": 8723,
+        "results": [
+          {
+            "text": "Привет! Как дела?",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_9065d304.wav",
+            "duration": 30.02,
+            "file_size": 1323960
+          },
+          {
+            "text": "Сегодня прекрасная погода.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_1290b047.wav",
+            "duration": 30.02,
+            "file_size": 1323960
+          },
+          {
+            "text": "Я очень рада вас видеть.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_0d8e96d5.wav",
+            "duration": 23.9,
+            "file_size": 1054068
+          },
+          {
+            "text": "Спасибо за внимание.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_bb2e25c5.wav",
+            "duration": 48.02,
+            "file_size": 2117760
+          },
+          {
+            "text": "До свидания!",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_63de22cf.wav",
+            "duration": 24.32,
+            "file_size": 1072590
+          }
+        ],
+        "successful": 5,
+        "total": 5
+      },
+      {
+        "voice": "audio_96@24-10-2021_21-20-21.ogg",
+        "voice_size": 106806,
+        "results": [
+          {
+            "text": "Привет! Как дела?",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_31514ede.wav",
+            "duration": 2.06,
+            "file_size": 90924
+          },
+          {
+            "text": "Сегодня прекрасная погода.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_8233cdab.wav",
+            "duration": 17.0,
+            "file_size": 749778
+          },
+          {
+            "text": "Я очень рада вас видеть.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_315f6c6c.wav",
+            "duration": 156.62,
+            "file_size": 6907020
+          },
+          {
+            "text": "Спасибо за внимание.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_02ecb37a.wav",
+            "duration": 72.32,
+            "file_size": 3189390
+          },
+          {
+            "text": "До свидания!",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_595c45be.wav",
+            "duration": 47.18,
+            "file_size": 2080716
+          }
+        ],
+        "successful": 5,
+        "total": 5
+      },
+      {
+        "voice": "audio_94@17-09-2021_09-58-16.ogg",
+        "voice_size": 132803,
+        "results": [
+          {
+            "text": "Привет! Как дела?",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_97a2f496.wav",
+            "duration": 28.58,
+            "file_size": 1260456
+          },
+          {
+            "text": "Сегодня прекрасная погода.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_26fdba6d.wav",
+            "duration": 6.02,
+            "file_size": 265560
+          },
+          {
+            "text": "Я очень рада вас видеть.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_48b25d14.wav",
+            "duration": 37.04,
+            "file_size": 1633542
+          },
+          {
+            "text": "Спасибо за внимание.",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_584231c1.wav",
+            "duration": 2.78,
+            "file_size": 122676
+          },
+          {
+            "text": "До свидания!",
+            "success": true,
+            "audio_path": "HierSpeech_TTS/temp_output/hier_speech_4b5461e5.wav",
+            "duration": 2.54,
+            "file_size": 112092
+          }
+        ],
+        "successful": 5,
+        "total": 5
+      }
+    ]
+  },
+  "system_performance": {
+    "hier_speech_tts": {
+      "status": "✅ Работает",
+      "available_voices": 5,
+      "success_rate": 100.0,
+      "tested_voices": 5
+    },
+    "voice_quality": {
+      "female_voices": "✅ Подтверждено",
+      "russian_language": "✅ Подтверждено",
+      "audio_format": "✅ WAV 22050Hz Mono"
+    }
+  },
+  "recommendations": [
+    "✅ Система готова к использованию",
+    "✅ Женские голоса работают корректно",
+    "✅ Русский язык поддерживается",
+    "✅ Качество звука удовлетворительное",
+    "🔶 Рекомендуется добавить больше разнообразия в тексты",
+    "🔶 Можно оптимизировать длительность синтеза"
+  ]
+}

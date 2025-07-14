@@ -10,11 +10,14 @@
 import os
 from typing import List
 
-from pydantic import BaseSettings, validator
+from pydantic_settings import BaseSettings
+from pydantic import validator, ConfigDict
 
 
 class Settings(BaseSettings):
-    """Настройки приложения."""
+    """
+    Настройки приложения.
+    """
     
     # Основные настройки
     ENVIRONMENT: str = "development"
@@ -49,8 +52,24 @@ class Settings(BaseSettings):
     
     # Ограничения
     MAX_FILE_SIZE: int = 50 * 1024 * 1024  # 50MB
-    MAX_AUDIO_DURATION: int = 300  # 5 минут
+    MAX_AUDIO_DURATION: int = 60  # 5 минут
     RATE_LIMIT_PER_MINUTE: int = 60
+    
+    # JWT
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
+    # Пути
+    UPLOAD_DIR: str = "./uploads"
+    PROCESSED_DIR: str = "./processed"
+    SADTALKER_PATH: str = "./models/sadtalker"
+    COQUI_TTS_PATH: str = "./models/coqui_tts"
+    
+    # AI модели
+    WHISPER_MODEL: str = "base"
+    OLLAMA_URL: str = "http://localhost:11434"
+    
+    model_config = ConfigDict(extra='allow', env_file=".env", case_sensitive=True)
     
     @validator("CORS_ORIGINS", pre=True)
     def parse_cors_origins(cls, v):
@@ -64,12 +83,6 @@ class Settings(BaseSettings):
         """Парсинг allowed hosts из строки."""
         if isinstance(v, str):
             return [host.strip() for host in v.split(",")]
-        return v
-    
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+        return v 
 
-
-# Создание экземпляра настроек
 settings = Settings() 

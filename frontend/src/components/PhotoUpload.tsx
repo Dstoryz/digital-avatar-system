@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef } from "react";
 
 interface PhotoUploadProps {
   onPhotosUploaded: (photos: File[]) => void;
@@ -9,7 +9,7 @@ interface PhotoUploadProps {
 const PhotoUpload: React.FC<PhotoUploadProps> = ({
   onPhotosUploaded,
   maxFiles = 5,
-  acceptedFormats = ['image/jpeg', 'image/png', 'image/webp']
+  acceptedFormats = ["image/jpeg", "image/png", "image/webp"],
 }) => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedPhotos, setUploadedPhotos] = useState<File[]>([]);
@@ -18,62 +18,68 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const validateFile = useCallback((file: File): string | null => {
-    // Проверка формата
-    if (!acceptedFormats.includes(file.type)) {
-      return `Неподдерживаемый формат: ${file.type}. Поддерживаются: ${acceptedFormats.join(', ')}`;
-    }
-
-    // Проверка размера (максимум 10MB)
-    if (file.size > 10 * 1024 * 1024) {
-      return `Файл слишком большой: ${(file.size / 1024 / 1024).toFixed(1)}MB. Максимум: 10MB`;
-    }
-
-    return null;
-  }, [acceptedFormats]);
-
-  const processFiles = useCallback((files: FileList) => {
-    const newPhotos: File[] = [];
-    const newPreviews: string[] = [];
-    const errors: string[] = [];
-
-    Array.from(files).forEach((file) => {
-      const validationError = validateFile(file);
-      if (validationError) {
-        errors.push(`${file.name}: ${validationError}`);
-        return;
+  const validateFile = useCallback(
+    (file: File): string | null => {
+      // Проверка формата
+      if (!acceptedFormats.includes(file.type)) {
+        return `Неподдерживаемый формат: ${file.type}. Поддерживаются: ${acceptedFormats.join(", ")}`;
       }
 
-      if (uploadedPhotos.length + newPhotos.length >= maxFiles) {
-        errors.push(`Максимальное количество файлов: ${maxFiles}`);
-        return;
+      // Проверка размера (максимум 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        return `Файл слишком большой: ${(file.size / 1024 / 1024).toFixed(1)}MB. Максимум: 10MB`;
       }
 
-      newPhotos.push(file);
-      
-      // Создание превью
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target?.result) {
-          newPreviews.push(e.target.result as string);
-          setPreviews(prev => [...prev, e.target!.result as string]);
+      return null;
+    },
+    [acceptedFormats],
+  );
+
+  const processFiles = useCallback(
+    (files: FileList) => {
+      const newPhotos: File[] = [];
+      const newPreviews: string[] = [];
+      const errors: string[] = [];
+
+      Array.from(files).forEach((file) => {
+        const validationError = validateFile(file);
+        if (validationError) {
+          errors.push(`${file.name}: ${validationError}`);
+          return;
         }
-      };
-      reader.readAsDataURL(file);
-    });
 
-    if (errors.length > 0) {
-      setError(errors.join('\n'));
-      return;
-    }
+        if (uploadedPhotos.length + newPhotos.length >= maxFiles) {
+          errors.push(`Максимальное количество файлов: ${maxFiles}`);
+          return;
+        }
 
-    if (newPhotos.length > 0) {
-      const updatedPhotos = [...uploadedPhotos, ...newPhotos];
-      setUploadedPhotos(updatedPhotos);
-      onPhotosUploaded(updatedPhotos);
-      setError(null);
-    }
-  }, [uploadedPhotos, maxFiles, validateFile, onPhotosUploaded]);
+        newPhotos.push(file);
+
+        // Создание превью
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target?.result) {
+            newPreviews.push(e.target.result as string);
+            setPreviews((prev) => [...prev, e.target!.result as string]);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+
+      if (errors.length > 0) {
+        setError(errors.join("\n"));
+        return;
+      }
+
+      if (newPhotos.length > 0) {
+        const updatedPhotos = [...uploadedPhotos, ...newPhotos];
+        setUploadedPhotos(updatedPhotos);
+        onPhotosUploaded(updatedPhotos);
+        setError(null);
+      }
+    },
+    [uploadedPhotos, maxFiles, validateFile, onPhotosUploaded],
+  );
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -85,29 +91,38 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
     }
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      processFiles(e.dataTransfer.files);
-    }
-  }, [processFiles]);
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setDragActive(false);
 
-  const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      processFiles(e.target.files);
-    }
-  }, [processFiles]);
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processFiles(e.dataTransfer.files);
+      }
+    },
+    [processFiles],
+  );
 
-  const removePhoto = useCallback((index: number) => {
-    const newPhotos = uploadedPhotos.filter((_, i) => i !== index);
-    const newPreviews = previews.filter((_, i) => i !== index);
-    setUploadedPhotos(newPhotos);
-    setPreviews(newPreviews);
-    onPhotosUploaded(newPhotos);
-  }, [uploadedPhotos, previews, onPhotosUploaded]);
+  const handleFileInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0]) {
+        processFiles(e.target.files);
+      }
+    },
+    [processFiles],
+  );
+
+  const removePhoto = useCallback(
+    (index: number) => {
+      const newPhotos = uploadedPhotos.filter((_, i) => i !== index);
+      const newPreviews = previews.filter((_, i) => i !== index);
+      setUploadedPhotos(newPhotos);
+      setPreviews(newPreviews);
+      onPhotosUploaded(newPhotos);
+    },
+    [uploadedPhotos, previews, onPhotosUploaded],
+  );
 
   const openFileDialog = useCallback(() => {
     fileInputRef.current?.click();
@@ -118,9 +133,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
       {/* Область загрузки */}
       <div
         className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          dragActive 
-            ? 'border-blue-500 bg-blue-50' 
-            : 'border-gray-300 hover:border-gray-400'
+          dragActive
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 hover:border-gray-400"
         }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -131,11 +146,11 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
           ref={fileInputRef}
           type="file"
           multiple
-          accept={acceptedFormats.join(',')}
+          accept={acceptedFormats.join(",")}
           onChange={handleFileInput}
           className="hidden"
         />
-        
+
         <div className="space-y-4">
           <div className="text-6xl text-gray-400">📸</div>
           <div>
@@ -143,17 +158,18 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
               Перетащите фото сюда или нажмите для выбора
             </p>
             <p className="text-sm text-gray-500 mt-2">
-              Поддерживаются: JPG, PNG, WEBP (максимум {maxFiles} файлов, 10MB каждый)
+              Поддерживаются: JPG, PNG, WEBP (максимум {maxFiles} файлов, 10MB
+              каждый)
             </p>
           </div>
-          
+
           <button
             type="button"
             onClick={openFileDialog}
             disabled={uploading}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {uploading ? 'Загрузка...' : 'Выбрать файлы'}
+            {uploading ? "Загрузка..." : "Выбрать файлы"}
           </button>
         </div>
       </div>
@@ -187,10 +203,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
                   ×
                 </button>
                 <div className="mt-2 text-xs text-gray-500">
-                  {photo.name.length > 20 
-                    ? `${photo.name.substring(0, 20)}...` 
-                    : photo.name
-                  }
+                  {photo.name.length > 20
+                    ? `${photo.name.substring(0, 20)}...`
+                    : photo.name}
                 </div>
               </div>
             ))}
@@ -200,7 +215,9 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
 
       {/* Рекомендации */}
       <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-        <h4 className="font-medium text-blue-800 mb-2">💡 Рекомендации для лучшего результата:</h4>
+        <h4 className="font-medium text-blue-800 mb-2">
+          💡 Рекомендации для лучшего результата:
+        </h4>
         <ul className="text-sm text-blue-700 space-y-1">
           <li>• Используйте фото с четким изображением лица</li>
           <li>• Выберите фото с хорошим освещением</li>
@@ -213,4 +230,4 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({
   );
 };
 
-export default PhotoUpload; 
+export default PhotoUpload;

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-07-13T11:57:15.956989",
+  "results": {
+    "pytorch_cuda": true,
+    "whisper": true,
+    "transformers": true,
+    "librosa": true,
+    "soundfile": true,
+    "espeak": true,
+    "ffmpeg": true,
+    "redis": true
+  },
+  "summary": {
+    "total_tests": 8,
+    "passed_tests": 8,
+    "failed_tests": 0,
+    "success_rate": 100.0
+  }
+}

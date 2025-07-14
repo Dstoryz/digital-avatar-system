@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-07-13T20:31:59.213326",
+  "system": {
+    "cpu_percent": 25.5,
+    "memory": {
+      "total": 62.69462585449219,
+      "available": 48.12071990966797,
+      "percent": 23.2
+    },
+    "disk": {
+      "total": 915.3232879638672,
+      "free": 321.7396545410156,
+      "percent": 59.76221000057229
+    }
+  },
+  "services": {
+    "backend": {
+      "port_8000": true,
+      "http_status": {
+        "status": "healthy",
+        "response_time": 0.002101,
+        "data": {
+          "status": "healthy",
+          "version": "1.0.0",
+          "timestamp": "2025-07-13T20:32:00.286704"
+        }
+      }
+    },
+    "frontend": {
+      "port_3000": true,
+      "http_status": {
+        "status": "unavailable",
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "data": null
+      }
+    },
+    "hier_tts": {
+      "port_8001": true,
+      "http_status": {
+        "status": "healthy",
+        "response_time": 0.002918,
+        "data": {
+          "status": "healthy",
+          "models_loaded": true,
+          "device": "cuda",
+          "cuda_available": true,
+          "available_female_voices": 73,
+          "total_female_voices": 73
+        }
+      }
+    }
+  },
+  "processes": {
+    "uvicorn": null,
+    "vite": null,
+    "train_tts": null,
+    "python": {
+      "pid": 9655,
+      "name": "python3",
+      "cpu_percent": 0.0,
+      "memory_percent": 0.06712495634322319,
+      "status": "running"
+    }
+  },
+  "training": {
+    "status": "not_running"
+  },
+  "gpu": {
+    "available": true,
+    "devices": [
+      {
+        "id": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "memory_total": 11.639404296875,
+        "memory_allocated": 0.0,
+        "memory_cached": 0.0
+      }
+    ]
+  }
+}

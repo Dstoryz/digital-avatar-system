@@ -266,3 +266,13 @@ docs/_build/
 .mypy_cache/
 .dmypy.json
 dmypy.json 
+# Исключаем пользовательские аудио и фото
+app/static/uploads/audio/
+app/static/uploads/photos/
+app/static/uploads/videos/
+data/
+uploads/
+test_data/audio/
+test_data/photos/
+test_data/processed/
+

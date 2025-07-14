@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Header: React.FC = () => {
   return (
@@ -9,38 +9,44 @@ const Header: React.FC = () => {
             <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">А</span>
             </div>
-            <h1 className="text-xl font-bold text-gray-900">
-              Цифровой Аватар
-            </h1>
+            <h1 className="text-xl font-bold text-gray-900">Цифровой Аватар</h1>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="/" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <a
+              href="/"
+              className="text-gray-600 hover:text-primary-600 transition-colors"
+            >
               Главная
             </a>
-            <a href="/settings" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <a
+              href="/settings"
+              className="text-gray-600 hover:text-primary-600 transition-colors"
+            >
               Настройки аватара
             </a>
-            <a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <a
+              href="#"
+              className="text-gray-600 hover:text-primary-600 transition-colors"
+            >
               Документация
             </a>
-            <a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <a
+              href="#"
+              className="text-gray-600 hover:text-primary-600 transition-colors"
+            >
               О проекте
             </a>
           </nav>
-          
+
           <div className="flex items-center space-x-3">
-            <button className="btn-secondary text-sm">
-              Настройки
-            </button>
-            <button className="btn-primary text-sm">
-              Начать общение
-            </button>
+            <button className="btn-secondary text-sm">Настройки</button>
+            <button className="btn-primary text-sm">Начать общение</button>
           </div>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header 
+export default Header;

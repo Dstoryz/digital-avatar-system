@@ -1,0 +1,19 @@
+{
+  "total_tests": 7,
+  "passed_tests": 9,
+  "failed_tests": -2,
+  "success_rate": 128.57142857142858,
+  "duration": 1.4622220993041992,
+  "results": {
+    "backend_health": true,
+    "hier_tts_health": true,
+    "sadtalker_health": true,
+    "frontend_health": false,
+    "websocket": true,
+    "whisper": true,
+    "ollama": true,
+    "hier_tts": true,
+    "sadtalker": true,
+    "full_pipeline": true
+  }
+}

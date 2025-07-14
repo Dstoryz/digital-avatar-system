@@ -1,0 +1,114 @@
+{
+  "timestamp": "2025-07-13T18:59:40.317313",
+  "training_data": {
+    "files": [
+      {
+        "original_name": "audio_4@13-12-2020_15-21-46.ogg",
+        "training_name": "training_sample_01.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_01.ogg",
+        "size_mb": 0.004581451416015625,
+        "estimated_duration_min": 0.004581451416015625
+      },
+      {
+        "original_name": "audio_16@04-02-2021_09-21-07.ogg",
+        "training_name": "training_sample_02.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_02.ogg",
+        "size_mb": 0.0059661865234375,
+        "estimated_duration_min": 0.0059661865234375
+      },
+      {
+        "original_name": "audio_84@10-07-2021_16-31-09.ogg",
+        "training_name": "training_sample_03.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_03.ogg",
+        "size_mb": 0.006018638610839844,
+        "estimated_duration_min": 0.006018638610839844
+      },
+      {
+        "original_name": "audio_11@24-01-2021_09-50-02.ogg",
+        "training_name": "training_sample_04.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_04.ogg",
+        "size_mb": 0.0298004150390625,
+        "estimated_duration_min": 0.0298004150390625
+      },
+      {
+        "original_name": "audio_27@23-03-2021_21-33-06.ogg",
+        "training_name": "training_sample_05.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_05.ogg",
+        "size_mb": 0.03058338165283203,
+        "estimated_duration_min": 0.03058338165283203
+      },
+      {
+        "original_name": "audio_51@03-04-2021_13-43-31.ogg",
+        "training_name": "training_sample_06.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_06.ogg",
+        "size_mb": 0.03302288055419922,
+        "estimated_duration_min": 0.03302288055419922
+      },
+      {
+        "original_name": "audio_40@30-03-2021_23-42-15.ogg",
+        "training_name": "training_sample_07.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_07.ogg",
+        "size_mb": 0.03353309631347656,
+        "estimated_duration_min": 0.03353309631347656
+      },
+      {
+        "original_name": "audio_92@08-09-2021_21-58-11.ogg",
+        "training_name": "training_sample_08.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_08.ogg",
+        "size_mb": 0.035330772399902344,
+        "estimated_duration_min": 0.035330772399902344
+      },
+      {
+        "original_name": "audio_142@11-07-2022_09-31-23.ogg",
+        "training_name": "training_sample_09.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_09.ogg",
+        "size_mb": 0.2715787887573242,
+        "estimated_duration_min": 0.2715787887573242
+      },
+      {
+        "original_name": "audio_144@23-07-2022_10-02-28.ogg",
+        "training_name": "training_sample_10.ogg",
+        "path": "/home/alex/Downloads/new-pr/training_data/training_sample_10.ogg",
+        "size_mb": 0.765864372253418,
+        "estimated_duration_min": 0.765864372253418
+      }
+    ],
+    "total_size_mb": 1.2162799835205078,
+    "formats": [
+      "ogg"
+    ]
+  },
+  "voice_cloning": [
+    {
+      "file": "training_sample_01.ogg",
+      "success": false,
+      "error": "HTTP 404"
+    },
+    {
+      "file": "training_sample_02.ogg",
+      "success": false,
+      "error": "HTTP 404"
+    },
+    {
+      "file": "training_sample_03.ogg",
+      "success": false,
+      "error": "HTTP 404"
+    },
+    {
+      "file": "training_sample_04.ogg",
+      "success": false,
+      "error": "HTTP 404"
+    },
+    {
+      "file": "training_sample_05.ogg",
+      "success": false,
+      "error": "HTTP 404"
+    }
+  ],
+  "tts_synthesis": [],
+  "quality_analysis": {
+    "quality_score": 0,
+    "message": "Нет успешных результатов для анализа"
+  },
+  "overall_score": 0.0
+}

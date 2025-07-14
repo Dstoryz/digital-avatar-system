@@ -5,15 +5,15 @@ WebSocket менеджер для управления соединениями 
 
 Автор: Авабот
 Версия: 1.0.0
+
+Примечание: FastAPI должен быть установлен в окружении ai_env
 """
 
 import json
 from typing import Dict, List
 
-import structlog
 from fastapi import WebSocket
-
-logger = structlog.get_logger(__name__)
+from datetime import datetime
 
 
 class WebSocketManager:
@@ -35,11 +35,10 @@ class WebSocketManager:
         await websocket.accept()
         self.active_connections[client_id] = websocket
         self.connection_info[client_id] = {
-            "connected_at": structlog.processors.TimeStamper(fmt="iso")(),
+            "connected_at": datetime.now().isoformat(),
             "status": "connected"
         }
         
-        logger.info("Клиент подключен", client_id=client_id)
     
     def disconnect(self, client_id: str):
         """
@@ -53,9 +52,8 @@ class WebSocketManager:
             
         if client_id in self.connection_info:
             self.connection_info[client_id]["status"] = "disconnected"
-            self.connection_info[client_id]["disconnected_at"] = structlog.processors.TimeStamper(fmt="iso")()
+            self.connection_info[client_id]["disconnected_at"] = datetime.now().isoformat()
         
-        logger.info("Клиент отключен", client_id=client_id)
     
     async def send_personal_message(self, message: str, client_id: str):
         """
@@ -68,9 +66,7 @@ class WebSocketManager:
         if client_id in self.active_connections:
             try:
                 await self.active_connections[client_id].send_text(message)
-                logger.debug("Сообщение отправлено", client_id=client_id, message=message)
             except Exception as e:
-                logger.error("Ошибка отправки сообщения", client_id=client_id, error=str(e))
                 self.disconnect(client_id)
     
     async def send_json_message(self, data: dict, client_id: str):
@@ -96,9 +92,7 @@ class WebSocketManager:
         for client_id, connection in self.active_connections.items():
             try:
                 await connection.send_text(message)
-                logger.debug("Broadcast сообщение отправлено", client_id=client_id)
             except Exception as e:
-                logger.error("Ошибка broadcast", client_id=client_id, error=str(e))
                 disconnected_clients.append(client_id)
         
         # Удаление отключенных клиентов

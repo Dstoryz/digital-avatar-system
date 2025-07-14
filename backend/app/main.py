@@ -11,37 +11,19 @@ import logging
 from contextlib import asynccontextmanager
 from typing import List
 
-import structlog
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from datetime import datetime
+import json
 
 from .config import settings
 from .routers import api_router
 from .services.websocket_manager import WebSocketManager
 
-# Настройка структурированного логирования
-structlog.configure(
-    processors=[
-        structlog.stdlib.filter_by_level,
-        structlog.stdlib.add_logger_name,
-        structlog.stdlib.add_log_level,
-        structlog.stdlib.PositionalArgumentsFormatter(),
-        structlog.processors.TimeStamper(fmt="iso"),
-        structlog.processors.StackInfoRenderer(),
-        structlog.processors.format_exc_info,
-        structlog.processors.UnicodeDecoder(),
-        structlog.processors.JSONRenderer()
-    ],
-    context_class=dict,
-    logger_factory=structlog.stdlib.LoggerFactory(),
-    wrapper_class=structlog.stdlib.BoundLogger,
-    cache_logger_on_first_use=True,
-)
-
-logger = structlog.get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 # Менеджер WebSocket соединений
 websocket_manager = WebSocketManager()
@@ -55,7 +37,7 @@ async def lifespan(app: FastAPI):
     Инициализирует ресурсы при запуске и очищает их при завершении.
     """
     # Startup
-    logger.info("Запуск приложения цифрового аватара", version="1.0.0")
+    logger.info("Запуск приложения цифрового аватара v1.0.0")
     
     # Проверка доступности GPU
     try:
@@ -63,7 +45,7 @@ async def lifespan(app: FastAPI):
         if torch.cuda.is_available():
             gpu_name = torch.cuda.get_device_name(0)
             gpu_memory = torch.cuda.get_device_properties(0).total_memory / 1024**3
-            logger.info("GPU доступен", gpu_name=gpu_name, memory_gb=gpu_memory)
+            logger.info(f"GPU доступен: {gpu_name}, память: {gpu_memory} ГБ")
         else:
             logger.warning("GPU недоступен, будет использоваться CPU")
     except ImportError:
@@ -76,7 +58,7 @@ async def lifespan(app: FastAPI):
         redis_client.ping()
         logger.info("Redis подключение установлено")
     except Exception as e:
-        logger.error("Ошибка подключения к Redis", error=str(e))
+        logger.error(f"Ошибка подключения к Redis: {e}")
     
     yield
     
@@ -138,19 +120,14 @@ class ErrorResponse(BaseModel):
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     """Глобальный обработчик исключений."""
-    logger.error(
-        "Необработанное исключение",
-        error=str(exc),
-        path=request.url.path,
-        method=request.method
-    )
+    logger.error(f"Необработанное исключение: {exc}, path: {request.url.path}, method: {request.method}")
     
     return JSONResponse(
         status_code=500,
         content={
             "error": "Внутренняя ошибка сервера",
             "detail": str(exc) if settings.DEBUG else "Произошла ошибка при обработке запроса",
-            "timestamp": structlog.processors.TimeStamper(fmt="iso")()
+            "timestamp": datetime.now().isoformat()
         }
     )
 
@@ -162,7 +139,7 @@ async def root():
     return HealthResponse(
         status="ok",
         version="1.0.0",
-        timestamp=structlog.processors.TimeStamper(fmt="iso")()
+        timestamp=datetime.now().isoformat()
     )
 
 
@@ -172,7 +149,7 @@ async def health_check():
     return HealthResponse(
         status="healthy",
         version="1.0.0",
-        timestamp=structlog.processors.TimeStamper(fmt="iso")()
+        timestamp=datetime.now().isoformat()
     )
 
 
@@ -192,7 +169,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
         while True:
             # Получение сообщения от клиента
             data = await websocket.receive_text()
-            logger.info("Получено WebSocket сообщение", client_id=client_id, data=data)
+            logger.info(f"Получено WebSocket сообщение от {client_id}: {data}")
             
             # Обработка сообщения (здесь будет логика AI)
             response = await process_websocket_message(client_id, data)
@@ -201,10 +178,42 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
             await websocket_manager.send_personal_message(response, client_id)
             
     except WebSocketDisconnect:
-        logger.info("WebSocket соединение закрыто", client_id=client_id)
+        logger.info(f"WebSocket соединение закрыто: {client_id}")
         websocket_manager.disconnect(client_id)
     except Exception as e:
-        logger.error("Ошибка в WebSocket", client_id=client_id, error=str(e))
+        logger.error(f"Ошибка в WebSocket {client_id}: {e}")
+        websocket_manager.disconnect(client_id)
+
+
+# Простой WebSocket endpoint без client_id
+@app.websocket("/ws")
+async def simple_websocket_endpoint(websocket: WebSocket):
+    """
+    Простой WebSocket endpoint для совместимости с frontend.
+    
+    Args:
+        websocket: WebSocket соединение
+    """
+    client_id = f"client_{len(websocket_manager.active_connections)}"
+    await websocket_manager.connect(websocket, client_id)
+    
+    try:
+        while True:
+            # Получение сообщения от клиента
+            data = await websocket.receive_text()
+            logger.info(f"Получено WebSocket сообщение: {data}")
+            
+            # Обработка сообщения (здесь будет логика AI)
+            response = await process_websocket_message(client_id, data)
+            
+            # Отправка ответа клиенту
+            await websocket_manager.send_personal_message(response, client_id)
+            
+    except WebSocketDisconnect:
+        logger.info(f"WebSocket соединение закрыто: {client_id}")
+        websocket_manager.disconnect(client_id)
+    except Exception as e:
+        logger.error(f"Ошибка в WebSocket: {e}")
         websocket_manager.disconnect(client_id)
 
 
@@ -217,23 +226,23 @@ async def process_websocket_message(client_id: str, message: str) -> str:
         message: Сообщение от клиента
         
     Returns:
-        Ответ для клиента
+        Ответ для клиента (JSON-строка)
     """
     # TODO: Интеграция с AI пайплайном
     # 1. Распознавание речи (Whisper)
     # 2. Генерация ответа (Ollama + Llama)
     # 3. Синтез речи (Coqui TTS)
     # 4. Анимация лица (SadTalker)
-    
-    return f"Получено сообщение: {message}"
+
+    response = {
+        "type": "pong",
+        "message": f"Получено сообщение: {message}"
+    }
+    return json.dumps(response, ensure_ascii=False)
 
 
-# Подключение роутеров
+# Подключение API роутеров
 app.include_router(api_router, prefix="/api/v1")
-
-# Подключение роутера загрузки
-from .routers import upload
-app.include_router(upload.router, prefix="/api/v1")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,225 @@
+{
+  "timestamp": "2025-07-13 19:31:26",
+  "test_type": "new_training_data",
+  "total_voices_tested": 5,
+  "total_tests": 25,
+  "total_successful": 25,
+  "overall_success_rate": 100.0,
+  "results": [
+    {
+      "voice": "audio_99@24-10-2021_21-22-03.ogg",
+      "voice_size": 85189,
+      "results": [
+        {
+          "text": "Привет! Как дела?",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_84ec45fd.wav",
+          "duration": 6.68,
+          "file_size": 294666
+        },
+        {
+          "text": "Сегодня прекрасная погода.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_70c462f2.wav",
+          "duration": 8.72,
+          "file_size": 384630
+        },
+        {
+          "text": "Я очень рада вас видеть.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_009aa67f.wav",
+          "duration": 28.58,
+          "file_size": 1260456
+        },
+        {
+          "text": "Спасибо за внимание.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_b6e8e940.wav",
+          "duration": 38.06,
+          "file_size": 1678524
+        },
+        {
+          "text": "До свидания!",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_3e1aebf1.wav",
+          "duration": 7.46,
+          "file_size": 329064
+        }
+      ],
+      "successful": 5,
+      "total": 5
+    },
+    {
+      "voice": "audio_97@24-10-2021_21-21-14.ogg",
+      "voice_size": 34916,
+      "results": [
+        {
+          "text": "Привет! Как дела?",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_8a349829.wav",
+          "duration": 15.44,
+          "file_size": 680982
+        },
+        {
+          "text": "Сегодня прекрасная погода.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_87c2bf86.wav",
+          "duration": 20.72,
+          "file_size": 913830
+        },
+        {
+          "text": "Я очень рада вас видеть.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_1990f1fa.wav",
+          "duration": 14.42,
+          "file_size": 636000
+        },
+        {
+          "text": "Спасибо за внимание.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_9d1ad783.wav",
+          "duration": 2.78,
+          "file_size": 122676
+        },
+        {
+          "text": "До свидания!",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_418ca62b.wav",
+          "duration": 20.72,
+          "file_size": 913830
+        }
+      ],
+      "successful": 5,
+      "total": 5
+    },
+    {
+      "voice": "audio_98@24-10-2021_21-21-33.ogg",
+      "voice_size": 8723,
+      "results": [
+        {
+          "text": "Привет! Как дела?",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_9065d304.wav",
+          "duration": 30.02,
+          "file_size": 1323960
+        },
+        {
+          "text": "Сегодня прекрасная погода.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_1290b047.wav",
+          "duration": 30.02,
+          "file_size": 1323960
+        },
+        {
+          "text": "Я очень рада вас видеть.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_0d8e96d5.wav",
+          "duration": 23.9,
+          "file_size": 1054068
+        },
+        {
+          "text": "Спасибо за внимание.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_bb2e25c5.wav",
+          "duration": 48.02,
+          "file_size": 2117760
+        },
+        {
+          "text": "До свидания!",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_63de22cf.wav",
+          "duration": 24.32,
+          "file_size": 1072590
+        }
+      ],
+      "successful": 5,
+      "total": 5
+    },
+    {
+      "voice": "audio_96@24-10-2021_21-20-21.ogg",
+      "voice_size": 106806,
+      "results": [
+        {
+          "text": "Привет! Как дела?",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_31514ede.wav",
+          "duration": 2.06,
+          "file_size": 90924
+        },
+        {
+          "text": "Сегодня прекрасная погода.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_8233cdab.wav",
+          "duration": 17.0,
+          "file_size": 749778
+        },
+        {
+          "text": "Я очень рада вас видеть.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_315f6c6c.wav",
+          "duration": 156.62,
+          "file_size": 6907020
+        },
+        {
+          "text": "Спасибо за внимание.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_02ecb37a.wav",
+          "duration": 72.32,
+          "file_size": 3189390
+        },
+        {
+          "text": "До свидания!",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_595c45be.wav",
+          "duration": 47.18,
+          "file_size": 2080716
+        }
+      ],
+      "successful": 5,
+      "total": 5
+    },
+    {
+      "voice": "audio_94@17-09-2021_09-58-16.ogg",
+      "voice_size": 132803,
+      "results": [
+        {
+          "text": "Привет! Как дела?",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_97a2f496.wav",
+          "duration": 28.58,
+          "file_size": 1260456
+        },
+        {
+          "text": "Сегодня прекрасная погода.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_26fdba6d.wav",
+          "duration": 6.02,
+          "file_size": 265560
+        },
+        {
+          "text": "Я очень рада вас видеть.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_48b25d14.wav",
+          "duration": 37.04,
+          "file_size": 1633542
+        },
+        {
+          "text": "Спасибо за внимание.",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_584231c1.wav",
+          "duration": 2.78,
+          "file_size": 122676
+        },
+        {
+          "text": "До свидания!",
+          "success": true,
+          "audio_path": "HierSpeech_TTS/temp_output/hier_speech_4b5461e5.wav",
+          "duration": 2.54,
+          "file_size": 112092
+        }
+      ],
+      "successful": 5,
+      "total": 5
+    }
+  ]
+}

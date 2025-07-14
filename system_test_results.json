@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-07-13T12:57:59.320264",
+  "backend_health": {
+    "status": "success",
+    "data": {
+      "status": "healthy",
+      "version": "1.0.0",
+      "timestamp": "2025-07-13T12:57:59.323451"
+    }
+  },
+  "backend_docs": {
+    "status": "success"
+  },
+  "backend_openapi": {
+    "status": "success",
+    "endpoints": [
+      "/",
+      "/health",
+      "/api/v1/upload/photos",
+      "/api/v1/upload/photos/{session_id}",
+      "/api/v1/upload/status"
+    ]
+  },
+  "frontend": {
+    "status": "success",
+    "url": "http://localhost:3000"
+  },
+  "upload_endpoint": {
+    "status": "success",
+    "data": {
+      "status": "ok",
+      "upload_dir": "app/static/uploads",
+      "processed_dir": "app/static/processed",
+      "photos_count": 0,
+      "avatars_count": 0,
+      "disk_space": {
+        "total_gb": 915,
+        "used_gb": 501,
+        "free_gb": 367,
+        "free_percent": 40.13
+      },
+      "limits": {
+        "max_file_size_mb": 10,
+        "max_files": 5,
+        "allowed_formats": [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ]
+      }
+    }
+  },
+  "websocket_endpoint": {
+    "status": "success",
+    "message": "WebSocket endpoint реализован"
+  },
+  "ai_models": {
+    "status": "success",
+    "results": {
+      "models": {
+        "status": "success",
+        "count": 6
+      },
+      "cache": {
+        "status": "success",
+        "size": 0
+      }
+    }
+  },
+  "execution_time": 0.02110886573791504,
+  "summary": {
+    "total_tests": 7,
+    "successful_tests": 7,
+    "failed_tests": 0,
+    "success_rate": 100.0
+  }
+}

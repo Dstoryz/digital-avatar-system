@@ -1,0 +1,30 @@
+{
+  "backend": {
+    "status": "success",
+    "message": "Backend API работает"
+  },
+  "hier_tts": {
+    "status": "success",
+    "message": "HierSpeech_TTS работает"
+  },
+  "sadtalker": {
+    "status": "error",
+    "message": "SadTalker не отвечает"
+  },
+  "frontend": {
+    "status": "success",
+    "message": "Frontend доступен"
+  },
+  "websocket": {
+    "status": "error",
+    "message": "No module named 'websockets'"
+  },
+  "audio_synthesis": {
+    "status": "success",
+    "message": "Синтез речи работает"
+  },
+  "ai_chat": {
+    "status": "success",
+    "message": "AI чат работает"
+  }
+}

@@ -1,68 +1,115 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from "react";
+import avatarService from "../services/avatarService";
 
 interface VoiceRecorderProps {
-  isConnected: boolean
-  isProcessing: boolean
-  onProcessingChange: (processing: boolean) => void
+  isConnected: boolean;
+  isProcessing: boolean;
+  onProcessingChange: (processing: boolean) => void;
+  onAudioReady?: (audio: Blob) => void;
+  onResponseReceived?: (response: { text: string; audioUrl: string }) => void;
 }
 
-const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ 
-  isConnected, 
-  isProcessing, 
-  onProcessingChange 
+const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
+  isConnected,
+  isProcessing,
+  onProcessingChange,
+  onAudioReady,
+  onResponseReceived,
 }) => {
-  const [isRecording, setIsRecording] = useState(false)
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const [isRecording, setIsRecording] = useState(false);
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  const [error, setError] = useState<string>("");
+  const [progress, setProgress] = useState<string>("");
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   const handleStartRecording = async () => {
-    if (!isConnected || isProcessing) return
+    if (!isConnected || isProcessing) return;
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      const mediaRecorder = new MediaRecorder(stream)
-      const chunks: Blob[] = []
+      setError("");
+      setProgress("");
+      console.log("[VoiceRecorder] Старт записи...");
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+      const chunks: Blob[] = [];
 
       mediaRecorder.ondataavailable = (event) => {
-        chunks.push(event.data)
-      }
+        chunks.push(event.data);
+      };
 
       mediaRecorder.onstop = () => {
-        const blob = new Blob(chunks, { type: 'audio/wav' })
-        setAudioBlob(blob)
-        stream.getTracks().forEach(track => track.stop())
-      }
+        const blob = new Blob(chunks, { type: "audio/wav" });
+        setAudioBlob(blob);
+        stream.getTracks().forEach((track) => track.stop());
+        console.log("[VoiceRecorder] Аудио записано, blob:", blob);
+        if (onAudioReady) onAudioReady(blob);
+      };
 
-      mediaRecorder.start()
-      setIsRecording(true)
+      mediaRecorder.start();
+      setIsRecording(true);
     } catch (error) {
-      console.error('Ошибка записи аудио:', error)
+      console.error("Ошибка записи аудио:", error);
+      setError("Ошибка доступа к микрофону");
     }
-  }
+  };
 
   const handleStopRecording = () => {
-    setIsRecording(false)
-    // TODO: Остановка записи и отправка аудио
-  }
+    setIsRecording(false);
+    console.log("[VoiceRecorder] Стоп записи");
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      mediaRecorderRef.current.stop();
+    }
+    // Автоматически отправляем аудио, если оно записано
+    setTimeout(() => {
+      if (audioBlob) {
+        console.log("[VoiceRecorder] Отправка аудио на backend...");
+        handleSendAudio();
+      }
+    }, 100); // небольшая задержка для корректного обновления состояния
+  };
 
   const handleSendAudio = async () => {
-    if (!audioBlob || isProcessing) return
+    if (!audioBlob || isProcessing) return;
 
-    onProcessingChange(true)
-    
+    onProcessingChange(true);
+    setError("");
+    setProgress("Обработка аудио...");
+    console.log("[VoiceRecorder] handleSendAudio: отправка blob:", audioBlob);
+
     try {
-      // TODO: Отправка аудио через WebSocket
-      // TODO: Получение ответа от аватара
-      
-      // Имитация обработки
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      setAudioBlob(null)
+      // Полный цикл обработки через avatarService
+      const result = await avatarService.processAudioInput(audioBlob);
+      console.log("[VoiceRecorder] Результат от backend:", result);
+
+      setProgress("Готово!");
+
+      // Передаем результат наверх
+      if (onResponseReceived) {
+        onResponseReceived({
+          text: result.aiResponse,
+          audioUrl: result.audioUrl,
+        });
+      }
+
+      setAudioBlob(null);
+
+      // Автоматическое воспроизведение аудио
+      const audio = new Audio(result.audioUrl);
+      audio.play().catch((err) => {
+        console.error("Ошибка воспроизведения:", err);
+        setError("Ошибка воспроизведения аудио");
+      });
     } catch (error) {
-      console.error('Ошибка отправки аудио:', error)
+      console.error("Ошибка обработки аудио:", error);
+      setError(
+        error instanceof Error ? error.message : "Ошибка обработки аудио",
+      );
     } finally {
-      onProcessingChange(false)
+      onProcessingChange(false);
+      setProgress("");
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
@@ -77,10 +124,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
             🎤 Начать запись
           </button>
         ) : (
-          <button
-            onClick={handleStopRecording}
-            className="btn-secondary"
-          >
+          <button onClick={handleStopRecording} className="btn-secondary">
             ⏹️ Остановить запись
           </button>
         )}
@@ -96,6 +140,26 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
         </div>
       )}
 
+      {/* Прогресс обработки */}
+      {progress && (
+        <div className="text-center">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full">
+            <div className="loading-spinner w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full mr-2"></div>
+            {progress}
+          </div>
+        </div>
+      )}
+
+      {/* Сообщение об ошибке */}
+      {error && (
+        <div className="text-center">
+          <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full">
+            <span className="mr-2">⚠️</span>
+            {error}
+          </div>
+        </div>
+      )}
+
       {/* Предварительное прослушивание */}
       {audioBlob && (
         <div className="space-y-2">
@@ -104,18 +168,22 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
             <source src={URL.createObjectURL(audioBlob)} type="audio/wav" />
             Ваш браузер не поддерживает аудио.
           </audio>
-          
+
           <div className="flex justify-center space-x-2">
             <button
               onClick={handleSendAudio}
               disabled={isProcessing}
               className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isProcessing ? 'Отправка...' : 'Отправить'}
+              {isProcessing ? "Обработка..." : "Отправить"}
             </button>
-            
+
             <button
-              onClick={() => setAudioBlob(null)}
+              onClick={() => {
+                setAudioBlob(null);
+                setError("");
+                setProgress("");
+              }}
               disabled={isProcessing}
               className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -131,7 +199,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
         <p>Максимальная длительность: 5 минут</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VoiceRecorder 
+export default VoiceRecorder;

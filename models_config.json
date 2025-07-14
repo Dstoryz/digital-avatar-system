@@ -1,0 +1,36 @@
+{
+  "models": {
+    "sadtalker": {
+      "path": "models/sadtalker",
+      "checkpoints": "models/sadtalker/checkpoints",
+      "enabled": true
+    },
+    "coqui_tts": {
+      "path": "models/coqui_tts",
+      "enabled": true
+    },
+    "whisper": {
+      "model": "base",
+      "enabled": true
+    },
+    "real_esrgan": {
+      "path": "models/real_esrgan",
+      "enabled": true
+    },
+    "wav2lip": {
+      "path": "models/wav2lip",
+      "checkpoints": "models/wav2lip/checkpoints",
+      "enabled": true
+    }
+  },
+  "gpu": {
+    "enabled": true,
+    "device": "cuda:0",
+    "memory_fraction": 0.8
+  },
+  "processing": {
+    "max_batch_size": 1,
+    "timeout": 300,
+    "temp_dir": "./temp"
+  }
+}

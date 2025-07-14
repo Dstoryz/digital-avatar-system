@@ -1,51 +1,50 @@
-import React, { useState } from 'react'
-
-interface ChatInterfaceProps {
-  isConnected: boolean
-  isProcessing: boolean
-}
+import React, { useState } from "react";
 
 interface Message {
-  id: string
-  text: string
-  sender: 'user' | 'avatar'
-  timestamp: Date
+  id: string;
+  text: string;
+  sender: "user" | "avatar";
+  timestamp: Date;
 }
 
-const ChatInterface: React.FC<ChatInterfaceProps> = ({ isConnected, isProcessing }) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: 'Привет! Я цифровой аватар. Как дела?',
-      sender: 'avatar',
-      timestamp: new Date()
-    }
-  ])
-  const [inputText, setInputText] = useState('')
+interface ChatInterfaceProps {
+  isConnected: boolean;
+  isProcessing: boolean;
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
+
+const ChatInterface: React.FC<ChatInterfaceProps> = ({
+  isConnected,
+  isProcessing,
+  messages,
+  setMessages,
+}) => {
+  const [inputText, setInputText] = useState("");
 
   const handleSendMessage = () => {
-    if (!inputText.trim() || !isConnected || isProcessing) return
+    if (!inputText.trim() || !isConnected || isProcessing) return;
 
     const newMessage: Message = {
       id: Date.now().toString(),
       text: inputText,
-      sender: 'user',
-      timestamp: new Date()
-    }
+      sender: "user",
+      timestamp: new Date(),
+    };
 
-    setMessages(prev => [...prev, newMessage])
-    setInputText('')
+    setMessages((prev) => [...prev, newMessage]);
+    setInputText("");
 
     // TODO: Отправка сообщения через WebSocket
     // TODO: Получение ответа от аватара
-  }
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      handleSendMessage()
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
     }
-  }
+  };
 
   return (
     <div className="h-full flex flex-col">
@@ -54,25 +53,29 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isConnected, isProcessing
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`mb-4 flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
               className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                message.sender === 'user'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-white text-gray-800 border border-gray-200'
+                message.sender === "user"
+                  ? "bg-primary-600 text-white"
+                  : "bg-white text-gray-800 border border-gray-200"
               }`}
             >
               <p className="text-sm">{message.text}</p>
-              <p className={`text-xs mt-1 ${
-                message.sender === 'user' ? 'text-primary-100' : 'text-gray-500'
-              }`}>
+              <p
+                className={`text-xs mt-1 ${
+                  message.sender === "user"
+                    ? "text-primary-100"
+                    : "text-gray-500"
+                }`}
+              >
                 {message.timestamp.toLocaleTimeString()}
               </p>
             </div>
           </div>
         ))}
-        
+
         {isProcessing && (
           <div className="flex justify-start">
             <div className="bg-white text-gray-800 border border-gray-200 px-4 py-2 rounded-lg">
@@ -91,7 +94,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isConnected, isProcessing
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder={isConnected ? "Введите сообщение..." : "Подключитесь для общения"}
+          placeholder={
+            isConnected ? "Введите сообщение..." : "Подключитесь для общения"
+          }
           disabled={!isConnected || isProcessing}
           className="flex-1 input-field resize-none"
           rows={3}
@@ -105,7 +110,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isConnected, isProcessing
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatInterface 
+export default ChatInterface;

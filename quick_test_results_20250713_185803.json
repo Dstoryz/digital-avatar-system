@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-07-13T18:58:03.007570",
+  "analysis": {
+    "total_files": 71,
+    "test_files": [
+      "audio_23@14-02-2021_22-39-21.ogg",
+      "audio_43@31-03-2021_23-26-30.ogg",
+      "audio_18@05-02-2021_21-18-18.ogg",
+      "audio_57@07-04-2021_21-27-31.ogg",
+      "audio_59@07-04-2021_21-28-15.ogg"
+    ],
+    "test_file_paths": [
+      "/home/alex/Downloads/new-pr/test_data/audio/audio_23@14-02-2021_22-39-21.ogg",
+      "/home/alex/Downloads/new-pr/test_data/audio/audio_43@31-03-2021_23-26-30.ogg",
+      "/home/alex/Downloads/new-pr/test_data/audio/audio_18@05-02-2021_21-18-18.ogg",
+      "/home/alex/Downloads/new-pr/test_data/audio/audio_57@07-04-2021_21-27-31.ogg",
+      "/home/alex/Downloads/new-pr/test_data/audio/audio_59@07-04-2021_21-28-15.ogg"
+    ]
+  },
+  "connections": {
+    "hier_speech": true,
+    "backend": true
+  },
+  "voice_cloning": {
+    "success": false,
+    "error": "HTTP 404"
+  },
+  "tts_synthesis": [
+    {
+      "success": true,
+      "audio_path": "temp_output/hier_speech_a75ea62e.wav",
+      "processing_time": 0,
+      "phrase": "Привет, как дела?"
+    },
+    {
+      "success": true,
+      "audio_path": "temp_output/hier_speech_65264ade.wav",
+      "processing_time": 0,
+      "phrase": "Сегодня прекрасная погода"
+    },
+    {
+      "success": true,
+      "audio_path": "temp_output/hier_speech_ed29d11f.wav",
+      "processing_time": 0,
+      "phrase": "Я изучаю искусственный интеллект"
+    }
+  ],
+  "overall_score": 0.6666666666666666
+}

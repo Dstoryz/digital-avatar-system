@@ -1,0 +1,38 @@
+{
+  "model_name": "tts_models/multilingual/multi-dataset/your_tts",
+  "run_name": "voice_cloning_finetune",
+  "run_description": "Fine-tuning YourTTS на пользовательских данных",
+  "data_path": "training_data/wav",
+  "train_metadata": "training_data/metadata/train_metadata.csv",
+  "val_metadata": "training_data/metadata/val_metadata.csv",
+  "stats": {
+    "total_files": 73,
+    "train_files": 58,
+    "val_files": 15,
+    "total_duration": 1586.84,
+    "avg_duration": 21.73753424657534
+  },
+  "training_params": {
+    "batch_size": 8,
+    "epochs": 1000,
+    "learning_rate": 0.0001,
+    "save_step": 1000,
+    "eval_step": 500,
+    "save_n_checkpoints": 5,
+    "save_best_after": 10000,
+    "target_loss": 0.5,
+    "print_step": 25,
+    "print_eval": true,
+    "mixed_precision": true,
+    "output_path": "tts_train_output",
+    "datasets": [
+      {
+        "name": "voice_cloning",
+        "path": "training_data/wav",
+        "meta_file_train": "training_data/metadata/train_metadata.csv",
+        "meta_file_val": "training_data/metadata/val_metadata.csv",
+        "language": "ru"
+      }
+    ]
+  }
+}

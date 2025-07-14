@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-07-13T19:00:46.342728",
+  "available_voices": [],
+  "voice_cloning": {
+    "success": false,
+    "error": "HTTP 422"
+  },
+  "backend_tts": [
+    {
+      "success": false,
+      "error": "HTTP 422",
+      "phrase": "Привет, это тест системы цифрового аватара"
+    },
+    {
+      "success": false,
+      "error": "HTTP 422",
+      "phrase": "Сегодня мы тестируем качество синтеза речи"
+    },
+    {
+      "success": false,
+      "error": "HTTP 422",
+      "phrase": "Искусственный интеллект создает реалистичную речь"
+    }
+  ],
+  "hier_speech_tts": [
+    {
+      "success": true,
+      "audio_path": "temp_output/hier_speech_22c0d1f5.wav",
+      "processing_time": 0,
+      "phrase": "Привет, это тест системы цифрового аватара"
+    },
+    {
+      "success": true,
+      "audio_path": "temp_output/hier_speech_544b1729.wav",
+      "processing_time": 0,
+      "phrase": "Сегодня мы тестируем качество синтеза речи"
+    }
+  ],
+  "russian_tts_test": {
+    "success": false,
+    "error": "HTTP 405"
+  },
+  "overall_score": 0.2
+}

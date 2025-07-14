@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import PhotoUpload from './PhotoUpload';
+import React, { useState, useCallback } from "react";
+import PhotoUpload from "./PhotoUpload";
 
 interface AvatarSettingsProps {
   onSettingsSaved: (settings: AvatarSettings) => void;
@@ -17,58 +17,63 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
   const [settings, setSettings] = useState<AvatarSettings>({
     photos: [],
     voiceSamples: [],
-    personality: '',
-    name: '',
-    description: ''
+    personality: "",
+    name: "",
+    description: "",
   });
-  
-  const [activeTab, setActiveTab] = useState<'photos' | 'voice' | 'personality'>('photos');
+
+  const [activeTab, setActiveTab] = useState<
+    "photos" | "voice" | "personality"
+  >("photos");
   const [isSaving, setIsSaving] = useState(false);
 
   const handlePhotosUploaded = useCallback((photos: File[]) => {
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
-      photos
+      photos,
     }));
   }, []);
 
   const handleVoiceSamplesUploaded = useCallback((samples: File[]) => {
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
-      voiceSamples: samples
+      voiceSamples: samples,
     }));
   }, []);
 
-  const handleInputChange = useCallback((field: keyof AvatarSettings, value: string) => {
-    setSettings(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  }, []);
+  const handleInputChange = useCallback(
+    (field: keyof AvatarSettings, value: string) => {
+      setSettings((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+    },
+    [],
+  );
 
   const handleSave = useCallback(async () => {
     if (settings.photos.length === 0) {
-      alert('Пожалуйста, загрузите хотя бы одно фото');
+      alert("Пожалуйста, загрузите хотя бы одно фото");
       return;
     }
 
     setIsSaving(true);
     try {
       // Здесь будет API вызов для сохранения настроек
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Имитация API
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Имитация API
       onSettingsSaved(settings);
     } catch (error) {
-      console.error('Ошибка сохранения настроек:', error);
-      alert('Ошибка сохранения настроек');
+      console.error("Ошибка сохранения настроек:", error);
+      alert("Ошибка сохранения настроек");
     } finally {
       setIsSaving(false);
     }
   }, [settings, onSettingsSaved]);
 
   const tabs = [
-    { id: 'photos', label: '📸 Фотографии', icon: '📸' },
-    { id: 'voice', label: '🎤 Голос', icon: '🎤' },
-    { id: 'personality', label: '🧠 Личность', icon: '🧠' }
+    { id: "photos", label: "📸 Фотографии", icon: "📸" },
+    { id: "voice", label: "🎤 Голос", icon: "🎤" },
+    { id: "personality", label: "🧠 Личность", icon: "🧠" },
   ] as const;
 
   return (
@@ -78,7 +83,8 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
           Настройка цифрового аватара
         </h1>
         <p className="text-gray-600">
-          Загрузите фотографии, запишите голос и настройте личность вашего аватара
+          Загрузите фотографии, запишите голос и настройте личность вашего
+          аватара
         </p>
       </div>
 
@@ -91,8 +97,8 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
               onClick={() => setActiveTab(tab.id)}
               className={`py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === tab.id
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? "border-blue-500 text-blue-600"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               <span className="mr-2">{tab.icon}</span>
@@ -104,38 +110,38 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
 
       {/* Содержимое вкладок */}
       <div className="min-h-[400px]">
-        {activeTab === 'photos' && (
+        {activeTab === "photos" && (
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Загрузка фотографий
               </h2>
               <p className="text-gray-600 mb-6">
-                Загрузите качественные фотографии лица для создания аватара. 
+                Загрузите качественные фотографии лица для создания аватара.
                 Рекомендуется 3-5 фото с разных ракурсов.
               </p>
             </div>
-            
+
             <PhotoUpload
               onPhotosUploaded={handlePhotosUploaded}
               maxFiles={5}
-              acceptedFormats={['image/jpeg', 'image/png', 'image/webp']}
+              acceptedFormats={["image/jpeg", "image/png", "image/webp"]}
             />
           </div>
         )}
 
-        {activeTab === 'voice' && (
+        {activeTab === "voice" && (
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Запись голоса
               </h2>
               <p className="text-gray-600 mb-6">
-                Запишите образцы голоса для клонирования. 
-                Говорите четко и естественно, включая разные эмоции.
+                Запишите образцы голоса для клонирования. Говорите четко и
+                естественно, включая разные эмоции.
               </p>
             </div>
-            
+
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
               <div className="text-6xl text-gray-400 mb-4">🎤</div>
               <p className="text-lg font-medium text-gray-700 mb-2">
@@ -151,7 +157,7 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
           </div>
         )}
 
-        {activeTab === 'personality' && (
+        {activeTab === "personality" && (
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
@@ -161,7 +167,7 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
                 Опишите характер и стиль общения вашего аватара
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -170,12 +176,12 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
                 <input
                   type="text"
                   value={settings.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
                   placeholder="Введите имя аватара"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Возраст
@@ -191,27 +197,31 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
                 </select>
               </div>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Описание личности
               </label>
               <textarea
                 value={settings.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("description", e.target.value)
+                }
                 placeholder="Опишите характер, интересы, стиль общения аватара..."
                 rows={4}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Стиль общения
               </label>
               <textarea
                 value={settings.personality}
-                onChange={(e) => handleInputChange('personality', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("personality", e.target.value)
+                }
                 placeholder="Опишите как аватар должен общаться: формально/неформально, дружелюбно/серьезно, используемые слова и фразы..."
                 rows={4}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -231,10 +241,10 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
             <span>🎤 Аудио: {settings.voiceSamples.length}</span>
           )}
         </div>
-        
+
         <div className="space-x-4">
           <button
-            onClick={() => setActiveTab('photos')}
+            onClick={() => setActiveTab("photos")}
             disabled={isSaving}
             className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 disabled:opacity-50 transition-colors"
           >
@@ -245,7 +255,7 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
             disabled={isSaving || settings.photos.length === 0}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isSaving ? 'Сохранение...' : 'Сохранить настройки'}
+            {isSaving ? "Сохранение..." : "Сохранить настройки"}
           </button>
         </div>
       </div>
@@ -253,4 +263,4 @@ const AvatarSettings: React.FC<AvatarSettingsProps> = ({ onSettingsSaved }) => {
   );
 };
 
-export default AvatarSettings; 
+export default AvatarSettings;

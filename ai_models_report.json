@@ -1,0 +1,13 @@
+{
+  "installation_results": {
+    "SadTalker": true,
+    "Coqui TTS": false,
+    "Whisper": false,
+    "Real-ESRGAN": true,
+    "Wav2Lip": true,
+    "Configuration": true
+  },
+  "models_dir": "models",
+  "total_models": 6,
+  "successful_installations": 4
+}

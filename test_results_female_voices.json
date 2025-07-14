@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-07-13 19:07:43",
+  "test_type": "female_voice_synthesis",
+  "results": [
+    {
+      "text": "Привет! Как дела?",
+      "success": true,
+      "audio_path": "HierSpeech_TTS/temp_output/hier_speech_8044c063.wav",
+      "duration": 2.9,
+      "file_size": 127968
+    },
+    {
+      "text": "Сегодня прекрасная погода.",
+      "success": true,
+      "audio_path": "HierSpeech_TTS/temp_output/hier_speech_64cc61c6.wav",
+      "duration": 4.28,
+      "file_size": 188826
+    },
+    {
+      "text": "Я очень рада вас видеть.",
+      "success": true,
+      "audio_path": "HierSpeech_TTS/temp_output/hier_speech_e5feb424.wav",
+      "duration": 4.16,
+      "file_size": 183534
+    },
+    {
+      "text": "Спасибо за внимание.",
+      "success": true,
+      "audio_path": "HierSpeech_TTS/temp_output/hier_speech_027808a4.wav",
+      "duration": 2.54,
+      "file_size": 112092
+    },
+    {
+      "text": "До свидания!",
+      "success": true,
+      "audio_path": "HierSpeech_TTS/temp_output/hier_speech_bf33ba3e.wav",
+      "duration": 3.2,
+      "file_size": 141198
+    }
+  ],
+  "statistics": {
+    "successful": 5,
+    "total": 5,
+    "success_rate": 100.0
+  }
+}

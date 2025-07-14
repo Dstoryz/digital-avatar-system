@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
 interface AvatarVideoProps {
-  isConnected: boolean
-  isProcessing: boolean
+  isConnected: boolean;
+  isProcessing: boolean;
 }
 
-const AvatarVideo: React.FC<AvatarVideoProps> = ({ isConnected, isProcessing }) => {
+const AvatarVideo: React.FC<AvatarVideoProps> = ({
+  isConnected,
+  isProcessing,
+}) => {
   return (
     <div className="video-container">
       {isConnected ? (
@@ -20,7 +23,7 @@ const AvatarVideo: React.FC<AvatarVideoProps> = ({ isConnected, isProcessing }) 
             <source src="/placeholder-avatar.mp4" type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
-          
+
           {isProcessing && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-lg">
               <div className="text-white text-center">
@@ -41,7 +44,7 @@ const AvatarVideo: React.FC<AvatarVideoProps> = ({ isConnected, isProcessing }) 
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AvatarVideo 
+export default AvatarVideo;
